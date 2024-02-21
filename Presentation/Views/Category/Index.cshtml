@@ -1,0 +1,38 @@
+﻿@using SaleHelder.Application.ViewModels.Category
+@model List<CategoryViewModel>
+
+<div class="container-fluid">
+    <div class="mb-3">
+        <a class="btn btn-primary" asp-controller="Category" asp-action="Create">Agregar categoría</a>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-info-circle mr-2"></i>No hay categorías registradas en la base de datos.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (CategoryViewModel category in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h5 class="card-title">Nombre de la categoría: @category.Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Agrega más detalles si es necesario -->
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-danger" asp-controller="Category" asp-action="DeleteConfirm" asp-route-id="@category.Id">
+                                <i class="fas fa-trash-alt mr-1"></i>Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@using SaleHelder.Application.ViewModels.Faq
+@model SaveFaqViewModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form method="post" asp-controller="FaQ" asp-action="Create">
+                <div class="mb-3">
+                    <label asp-for="@Model.question" class="form-label">Pregunta:</label>
+                    <input asp-for="@Model.question" class="form-control" />
+                    <span asp-validation-for="@Model.question" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.IdDep" class="form-label">Selecciona el departamento:</label>
+                    <select asp-for="@Model.IdDep" class="form-control">
+                        @foreach (var faq in Model.Departments)
+                        {
+                            <option value="@faq.Id">@faq.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="@Model.IdDep" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" value="vacia" asp-for="@Model.Answer" />
+                <input type="hidden" asp-for="@Model.id" />
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a asp-controller="FaQ" asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

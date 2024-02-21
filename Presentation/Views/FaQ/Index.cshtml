@@ -1,0 +1,63 @@
+﻿@using SaleHelder.Application.ViewModels.Faq
+@model List<FaqViewModel>
+
+<<<<<<< HEAD
+<div class="container">
+    <div class="mb-4">
+        <a class="btn btn-primary" asp-controller="FaQ" asp-action="Create">Agregar Pregunta</a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-info-circle mr-2"></i>No hay preguntas registradas en la base de datos.
+=======
+<div class="container-fluid">
+    <div class="mb-8">
+        <a class="btn btn-primary" asp-controller="FaQ" asp-action="Create">Agregrar pregunta</a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-primary" role="alert">
+            No hay preguntas registradas en la bd.
+>>>>>>> 2512426f26a40f2af95d3d5acebfd021539d22e1
+        </div>
+    }
+    else
+    {
+<<<<<<< HEAD
+        <div class="row justify-content-center">
+            @foreach (FaqViewModel faq in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h5 class="card-title">Pregunta: @faq.question</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Para el departamento: @faq.NameDep</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-danger" asp-controller="FaQ" asp-action="DeleteConfirm" asp-route-id="@faq.id">
+                                <i class="fas fa-trash-alt mr-1"></i>Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+=======
+        @foreach (FaqViewModel faq in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Pregunta: @faq.question</h5>
+                    <p>Para el departamento: @faq.NameDep</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-danger" asp-controller="FaQ" asp-action="DeleteConfirm" asp-route-id="@faq.id">Eliminar</a>
+                </div>
+            </div>
+        }
+>>>>>>> 2512426f26a40f2af95d3d5acebfd021539d22e1
+    }
+</div>

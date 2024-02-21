@@ -1,0 +1,36 @@
+﻿@using SaleHelder.Application.ViewModels.Issue
+@model List<IssueViewModel>
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="text-center mb-3">
+                <a class="btn btn-lg btn-primary" asp-controller="Issue" asp-action="Create">
+                    <i class="fas fa-plus-circle mr-2"></i>Crear Reporte
+                </a>
+            </div>
+
+            @if (Model.Count == 0)
+            {
+                <h1 class="text-center text-muted">No hay reportes</h1>
+            }
+            else
+            {
+                @foreach (IssueViewModel issue in Model)
+                {
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title">Código: @issue.Id</h2>
+                            <h3 class="card-subtitle">ID del usuario: @issue.IdUser</h3>
+                            <h3 class="card-subtitle">Usuario: @issue.NameUser</h3>
+                            <div class="ticket-button-container">
+                                <a href="@Url.Action("Get", "Issue", new { id = issue.Id })" class="btn btn-primary ticket-button">Ver Ticket</a>
+                            </div>
+                            <h5 class="card-text mt-2 text-danger">Estado: @(issue.Status ? "Cerrado" : "Abierto")</h5>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

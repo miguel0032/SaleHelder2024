@@ -1,0 +1,31 @@
+﻿@using SaleHelder.Application.ViewModels.Category
+@model SaveCategoryViewModel;
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Agregando una categoría</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Category" asp-action="Create">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre de la categoría:</label>
+                            <input type="text" asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a asp-controller="Category" asp-action="Index" class="btn btn-danger">Volver atrás</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

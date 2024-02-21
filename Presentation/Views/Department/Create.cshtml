@@ -1,0 +1,39 @@
+﻿@using SaleHelder.Application.ViewModels.Department
+@model SaveDepartmentViewModel
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Agregar un Departamento</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Department" asp-action="Create">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre del departamento:</label>
+                            <input type="text" asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="IdCategory" class="form-label">Selecciona la categoría:</label>
+                            <select asp-for="IdCategory" class="form-control">
+                                @foreach (var category in Model.categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IdCategory" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a asp-controller="Department" asp-action="Index" class="btn btn-danger ml-2">Volver atrás</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
